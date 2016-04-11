@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{41374dd5-5ce8-4ba8-97a9-ed6f40200d76}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyApplication</RootNamespace>
+    <AssemblyName>MyApplication</AssemblyName>
+    <Name>EDP.MO.Scripts</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Activate - Feature.ps1" />
+    <Compile Include="Deactivate - Feature.ps1" />
+    <Compile Include="Delete - AppData Assembly.ps1" />
+    <Compile Include="Delete - DocLibrary Items &amp; Folders.ps1" />
+    <Compile Include="Delete - List Items.ps1" />
+    <Compile Include="Delete - RecycleBin.ps1" />
+    <Compile Include="Execute - HttpRequestUrl.ps1" />
+    <Compile Include="Execute - TimerJobNavigation.ps1" />
+    <Compile Include="Generic - Loop Through All Webs.ps1" />
+    <Compile Include="Install - CustomActionsFeature.ps1" />
+    <Compile Include="Install - NavigationTimerJob.ps1" />
+    <Compile Include="Logging - FetchMissingVariationChapters.ps1" />
+    <Compile Include="Logging - GetDuplicateNavNodes.ps1" />
+    <Compile Include="Restore - SPSite from backup.ps1" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="Build" />
+</Project>
