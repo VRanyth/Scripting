@@ -10,4 +10,4 @@ $url = "http://shp2010dev:22222/"
 
 $featureId = "c75ebe6d-c457-41a8-a035-82725ed0e6d2"
 
-Enable-SPFeature -Identity $featureId -url $url #-erroraction SilentlyContinue
+Enable-SPFeature -Identity $featureId -url $url #-erroraction SilentlyContinue    
