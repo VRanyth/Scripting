@@ -1,18 +1,20 @@
 ﻿param
 (
+	[Parameter(Mandatory=$True)]
 	$url = $(Read-Host -Prompt "Site Url"),
+
+	[Parameter(Mandatory=$True)]
     $listName = $(Read-Host -Prompt "ListName")
 )
 
-if ((Get-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue) -eq $null) 
-{
-    Add-PSSnapin "Microsoft.SharePoint.PowerShell"
-}
-
-cls
-write-host("")
+Add-PSSnapin "Microsoft.SharePoint.PowerShell"  -ErrorAction SilentlyContinue
 
 $site = new-object Microsoft.SharePoint.SPSite ($url)
+
+cls
+write-host(“## Starting script on Site Collection Url : ” + $site.url + " ##")
+write-host("")
+
 $web = $site.OpenWeb()
 
 write-host(“Site : ” + $site.url)
@@ -29,5 +31,4 @@ for($intIndex = $count; $intIndex -gt -1; $intIndex--)
 	write-host("Item: " + $collListItems[$intIndex]["Title"])
 	$collListItems.Delete($intIndex)      
 } 
-
 write-host(“All Items deleted.”)

@@ -1,8 +1,11 @@
 ﻿param
 (
+	[Parameter(Mandatory=$True)]	
 	$url = $(Read-Host -Prompt "Url"),
+	[Parameter(Mandatory=$True)]	
     $Times = $(Read-Host -Prompt "Retry Count")
 )
+
 cls
 $i = 0
 $average = 0

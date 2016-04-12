@@ -1,13 +1,15 @@
 param
 (
+	[Parameter(Mandatory=$True)]	
 	$url = $(Read-Host -Prompt "SiteCollection Url"),
-	$path =  $(Read-Host -Prompt "FullPath Backup File(*.bak)")   #C:\bk\site.bak
+	[Parameter(Mandatory=$True)]	
+	$path =  $(Read-Host -Prompt "Full Path Filename(*.bak)")   #C:\bk\site.bak
 )
 
-if((Get-PSSnapin | Where {$_.Name -eq "Microsoft.SharePoint.PowerShell"}) -eq $null)             
-{            
- Add-PSSnapin Microsoft.SharePoint.PowerShell            
-}
-
+cls
+write-host(“## Starting script on Site Collection Url : ” + $url + " ##")
+write-host(“")
+            
+ Add-PSSnapin Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue        
 
 Restore-SPSite $url -Path $path

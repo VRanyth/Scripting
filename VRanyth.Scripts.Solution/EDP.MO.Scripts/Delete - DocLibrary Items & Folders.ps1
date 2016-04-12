@@ -1,15 +1,17 @@
-﻿if ((Get-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue) -eq $null) 
-{
-    Add-PSSnapin "Microsoft.SharePoint.PowerShell"
-}
+﻿param
+(
+	[Parameter(Mandatory=$True)]
+	$url = $(Read-Host -Prompt "SiteCollection Url"),
+	
+	[Parameter(Mandatory=$True)]
+	$docLibUrl = $(Read-Host -Prompt "DocLib Full Url")
+)
+
+Add-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue
 
 cls
 write-host("")
-$url = "http://shp2010dev:22222/"
-#$url = "http://m01-mo.edp.pt/"
-#$url = "http://mo.edp.pt/"
-
-$docLibUrl = "http://mo.edp.pt/ChaptersToDownload"
+#$docLibUrl = "http://mo.edp.pt/ChaptersToDownload"
 
 $web = Get-SPWeb -Identity $url
 $list = $web.GetList($docLibUrl)

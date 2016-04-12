@@ -1,13 +1,13 @@
-﻿if ((Get-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue) -eq $null) 
-{
-    Add-PSSnapin "Microsoft.SharePoint.PowerShell"
-}
+﻿param
+(
+	[Parameter(Mandatory=$True)]
+	$url = $(Read-Host -Prompt "SiteCollection Url")
+)
+
+Add-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue
+
 cls
 write-host("")
-#$url = "http://shp2010dev:22222/"
-$url = "http://m01-mo.edp.pt/"
-#$url = "http://mo.edp.pt/"
-
 
 $web = Get-SPWeb -Identity $url
 

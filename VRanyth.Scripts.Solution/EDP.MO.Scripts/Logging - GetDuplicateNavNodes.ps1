@@ -1,8 +1,11 @@
 param
 (
+	[Parameter(Mandatory=$True)]
 	$url = $(Read-Host -Prompt "SiteCollection Url")
 )
+
 Add-PSSnapin Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue
+
 $Logfile = "duplicates_log.txt"
 
 Function LogWrite

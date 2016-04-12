@@ -1,23 +1,23 @@
 ﻿param
 (
+	[Parameter(Mandatory=$True)]	
 	$url = $(Read-Host -Prompt "SiteCollection Url")
 )
 
-if ((Get-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue) -eq $null) 
-{
-    Add-PSSnapin "Microsoft.SharePoint.PowerShell"
-}
+Add-PSSnapin "Microsoft.SharePoint.PowerShell"  -ErrorAction SilentlyContinue
  
-$siteCollection = New-Object Microsoft.SharePoint.SPSite($url)
+$site = New-Object Microsoft.SharePoint.SPSite($url)
 
-write-host(“Site Collection Url : ” + $siteCollection.url)
+cls
+write-host(“## Starting script on Site Collection Url : ” + $site.url + " ##")
+write-host("")
 
-write-host(“Items to be deleted : ” + $siteCollection.RecycleBin.Count.toString())
+write-host(“Items to be deleted : ” + $site.RecycleBin.Count.toString())
 
-$siteCollection.RecycleBin.DeleteAll();
+$site.RecycleBin.DeleteAll();
 
 $now = Get-Date
 
 write-host(“Deleting completed at ” +$now.toString())
 
-$siteCollection.Dispose();
+$site.Dispose();

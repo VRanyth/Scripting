@@ -1,8 +1,11 @@
-﻿$url = "http://shp2010dev:22222/"
-#$url = "http://m01-mo.edp.pt/"
-#$url = "http://mo.edp.pt/"
+﻿param
+(
+	[Parameter(Mandatory=$True)]
+	$url = $(Read-Host -Prompt "SiteCollection Url"),
 
-$reinstall = $true
+	[Parameter(Mandatory=$True)]
+	[boolean]$reinstall =  $(Read-Host -Prompt "Reinstall Feature? (true/false)")
+)
 
 if ((Get-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue) -eq $null) 
 {
