@@ -3,10 +3,7 @@ param
 	[Parameter(Mandatory=$True)]
 	$url = $(Read-Host -Prompt "SiteCollection Url")
 )
-
 Add-PSSnapin Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue
-
-$Logfile = "duplicates_log.txt"
 
 Function LogWrite
 {
@@ -80,24 +77,33 @@ function deleteGlobalNodesRecurse
 	}
 }
 
-$sitecoll = Get-SPSite $url
-write-host "SiteCollection: " $sitecoll.URL
-foreach ($site in $sitecoll.AllWebs)
+$Logfile = "duplicates_log.txt"
+
+$logpath = (Get-Item -Path ".\" -Verbose).FullName + $logpath
+
+$site = Get-SPSite $url
+cls
+write-host(“## Starting script on Site Collection Url : ” + $site.url + " ##")
+write-host("")
+write-host(“## If needed, log will be writen on: ” + $logfile + " ##")
+write-host("")
+
+foreach ($web in $site.AllWebs)
 {
-	write-host " -> Site: " $site.URL
-	
+	write-host " -> Site: " $web.URL	
 	do
 	{
-	   $quickLaunch = $site.Navigation.QuickLaunch
+	   $quickLaunch = $web.Navigation.QuickLaunch
 	   $global:didDelete = $false
 
 	   deleteNodesRecurse
-	   $pub= [Microsoft.SharePoint.Publishing.PublishingWeb]::GetPublishingWeb($site)
+	   $pub= [Microsoft.SharePoint.Publishing.PublishingWeb]::GetPublishingWeb($web)
 	   $gnavNodes = $pub.Navigation.GlobalNavigationNodes;
 
 	   deleteGlobalNodesRecurse
 	}
 	while($global:didDelete)
-	$site.Dispose()
+	$web.Dispose()
 }
-$sitecoll.Dispose()
+
+$site.Dispose()
