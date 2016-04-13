@@ -1,6 +1,6 @@
 ﻿cls
 $process = "vssphost4"
-$dir = "C:\Users\devadmin\AppData\Local\assembly\dl3"
+$dir = "C:\Users\devadmin\AppData\Local\assembly\dl3\"
 
 if((get-process $process -ea SilentlyContinue) -eq $Null){ 
         echo "vssphost4 is Not Running"

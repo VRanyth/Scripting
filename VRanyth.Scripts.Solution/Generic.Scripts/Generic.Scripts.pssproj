@@ -28,6 +28,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Delete - AppData Assembly.ps1" />
+    <Compile Include="Delete - DocLibrary Items &amp; Folders.ps1" />
     <Compile Include="Delete - List Items.ps1" />
     <Compile Include="Delete - RecycleBin.ps1" />
     <Compile Include="Execute - HttpRequestUrl.ps1" />

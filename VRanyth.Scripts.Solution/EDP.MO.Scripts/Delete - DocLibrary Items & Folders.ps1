@@ -4,7 +4,7 @@
 	$url = $(Read-Host -Prompt "SiteCollection Url"),
 	
 	[Parameter(Mandatory=$True)]
-	$docLibUrl = $(Read-Host -Prompt "DocLib Full Url")
+	$docLibUrl = $(Read-Host -Prompt "DocLib Name")
 )
 
 Add-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue
