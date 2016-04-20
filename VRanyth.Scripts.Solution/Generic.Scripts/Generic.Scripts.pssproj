@@ -32,6 +32,7 @@
     <Compile Include="Delete - List Items.ps1" />
     <Compile Include="Delete - RecycleBin.ps1" />
     <Compile Include="Execute - HttpRequestUrl.ps1" />
+    <Compile Include="Execute Loop - HttpRequestUrl based on txt.ps1" />
     <Compile Include="Generic - Loop Through All Webs.ps1" />
     <Compile Include="Restore - SPSite from backup.ps1" />
   </ItemGroup>
