@@ -29,7 +29,6 @@
   <ItemGroup>
     <Compile Include="Activate - Feature.ps1" />
     <Compile Include="Deactivate - Feature.ps1" />
-    <Compile Include="Delete - DocLibrary Items &amp; Folders.ps1" />
     <Compile Include="Execute - TimerJobNavigation.ps1" />
     <Compile Include="Install - CustomActionsFeature.ps1" />
     <Compile Include="Install - NavigationTimerJob.ps1" />
