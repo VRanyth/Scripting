@@ -11,7 +11,6 @@ Add-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue
 
 cls
 write-host("")
-#$docLibUrl = "http://mo.edp.pt/ChaptersToDownload"
 
 $web = Get-SPWeb -Identity $url
 $list = $web.GetList($docLibUrl)
@@ -21,7 +20,7 @@ function DeleteFiles {
     $folder = $web.GetFolder($folderUrl)
     foreach ($file in $folder.Files) {
         # Delete file by deleting parent SPListItem
-        Write-Host("Deleted File: " + $file.name)
+        Write-Host("   -> Deleted File: " + $file.name)
         $list.Items.DeleteItemById($file.Item.Id)
     }
 }
@@ -38,7 +37,7 @@ foreach ($folder in $list.Folders) {
 # Delete folders
 foreach ($folder in $list.Folders) {
     try {
-        Write-Host("Deleted Folder: " + $folder.name)
+        Write-Host("   -> Deleted Folder: " + $folder.name)
         $list.Folders.DeleteItemById($folder.ID)
     }
     catch {
