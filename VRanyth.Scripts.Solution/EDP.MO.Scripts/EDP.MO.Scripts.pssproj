@@ -32,6 +32,7 @@
     <Compile Include="Execute - TimerJobNavigation.ps1" />
     <Compile Include="Install - CustomActionsFeature.ps1" />
     <Compile Include="Install - NavigationTimerJob.ps1" />
+    <Compile Include="Logging - FetchCheckedOutNonPublishedChapters.ps1" />
     <Compile Include="Logging - FetchMissingVariationChapters.ps1" />
     <Compile Include="Logging - GetDuplicateNavNodes.ps1" />
   </ItemGroup>
